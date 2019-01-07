@@ -18,7 +18,7 @@ import UIKit
 /// `MagazineLayout`'s invalidation context type.
 ///
 /// Used to indicate that collection view properties and/or delegate layout metrics changed.
-public final class MagazineLayoutInvalidationContext: UICollectionViewLayoutInvalidationContext {
+public class MagazineLayoutInvalidationContext: UICollectionViewLayoutInvalidationContext {
 
   /// Indicates whether to recompute the positions and sizes of elements based on the current
   /// collection view and delegate layout metrics.

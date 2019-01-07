@@ -17,7 +17,7 @@ import CoreGraphics
 import Foundation
 
 /// Manages the state of section and element models.
-final class ModelState {
+class ModelState {
 
   // MARK: Internal
 

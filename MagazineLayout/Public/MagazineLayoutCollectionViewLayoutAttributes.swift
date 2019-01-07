@@ -21,7 +21,7 @@ import UIKit
 /// vertical fitting priority to pass into
 /// `systemLayoutSizeFitting(_:withHorizontalFittingPriority:verticalFittingPriority)` via
 /// `preferredLayoutAttributesFitting(_:)`.
-public final class MagazineLayoutCollectionViewLayoutAttributes: UICollectionViewLayoutAttributes {
+public class MagazineLayoutCollectionViewLayoutAttributes: UICollectionViewLayoutAttributes {
 
   /// `MagazineLayout` supports self-sizing and static-sizing in the vertical direction. The value
   /// of this property will change the layout priority used for sizing.

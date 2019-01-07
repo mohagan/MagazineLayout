@@ -103,7 +103,7 @@ struct ElementLocationFramePairsIterator: IteratorProtocol {
 // MARK: - ElementLocationFramePair
 
 /// Encapsulates a `ElementLocation` and a `CGRect` frame for an element.
-final class ElementLocationFramePair {
+class ElementLocationFramePair {
 
   // MARK: Lifecycle
 
