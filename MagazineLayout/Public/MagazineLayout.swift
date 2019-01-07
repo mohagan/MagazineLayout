@@ -22,19 +22,19 @@ import UIKit
 ///
 /// Returning different `MagazineLayoutItemSizeMode`s from the delegate protocol implementation will
 /// change how many items are displayed in a row and how each item sizes vertically.
-public class MagazineLayout: UICollectionViewLayout {
+open class MagazineLayout: UICollectionViewLayout {
 
   // MARK: Public
 
-  override public class  var layoutAttributesClass: AnyClass {
+  override open class  var layoutAttributesClass: AnyClass {
     return MagazineLayoutCollectionViewLayoutAttributes.self
   }
 
-  override public class var invalidationContextClass: AnyClass {
+  override open class var invalidationContextClass: AnyClass {
     return MagazineLayoutInvalidationContext.self
   }
 
-  override public var collectionViewContentSize: CGSize {
+  override open var collectionViewContentSize: CGSize {
     let numberOfSections = modelState.numberOfSections(.afterUpdates)
 
     let width: CGFloat
@@ -55,7 +55,7 @@ public class MagazineLayout: UICollectionViewLayout {
     return CGSize(width: width, height: height)
   }
 
-  override public func prepare() {
+  override open func prepare() {
     super.prepare()
 
     guard !prepareActions.isEmpty else { return }
@@ -178,7 +178,7 @@ public class MagazineLayout: UICollectionViewLayout {
     prepareActions = []
   }
 
-  override public func prepare(forCollectionViewUpdates updateItems: [UICollectionViewUpdateItem]) {
+  override open func prepare(forCollectionViewUpdates updateItems: [UICollectionViewUpdateItem]) {
     saveCurrentLayoutAttributesAsPreviousLayoutAttributes()
 
     var updates = [CollectionViewUpdate<SectionModel, ItemModel>]()
@@ -257,26 +257,26 @@ public class MagazineLayout: UICollectionViewLayout {
     super.prepare(forCollectionViewUpdates: updateItems)
   }
 
-  override public func finalizeCollectionViewUpdates() {
+  override open func finalizeCollectionViewUpdates() {
     clearPreviousLayoutAttributes()
     modelState.clearInProgressBatchUpdateState()
 
     super.finalizeCollectionViewUpdates()
   }
 
-  override public func prepare(forAnimatedBoundsChange oldBounds: CGRect) {
+  override open func prepare(forAnimatedBoundsChange oldBounds: CGRect) {
     saveCurrentLayoutAttributesAsPreviousLayoutAttributes()
 
     super.prepare(forAnimatedBoundsChange: oldBounds)
   }
 
-  override public func finalizeAnimatedBoundsChange() {
+  override open func finalizeAnimatedBoundsChange() {
     clearPreviousLayoutAttributes()
 
     super.finalizeAnimatedBoundsChange()
   }
 
-  override public func layoutAttributesForElements(
+  override open func layoutAttributesForElements(
     in rect: CGRect)
     -> [UICollectionViewLayoutAttributes]?
   {
@@ -321,7 +321,7 @@ public class MagazineLayout: UICollectionViewLayout {
     return layoutAttributesInRect
   }
 
-  override public func layoutAttributesForItem(
+  override open func layoutAttributesForItem(
     at indexPath: IndexPath)
     -> UICollectionViewLayoutAttributes?
   {
@@ -347,7 +347,7 @@ public class MagazineLayout: UICollectionViewLayout {
     return layoutAttributes
   }
 
-  override public func layoutAttributesForSupplementaryView(
+  override open func layoutAttributesForSupplementaryView(
     ofKind elementKind: String,
     at indexPath: IndexPath)
     -> UICollectionViewLayoutAttributes?
@@ -376,7 +376,7 @@ public class MagazineLayout: UICollectionViewLayout {
     }
   }
 
-  override public func initialLayoutAttributesForAppearingItem(
+  override open func initialLayoutAttributesForAppearingItem(
     at itemIndexPath: IndexPath)
     -> UICollectionViewLayoutAttributes?
   {
@@ -399,7 +399,7 @@ public class MagazineLayout: UICollectionViewLayout {
     }
   }
 
-  override public func finalLayoutAttributesForDisappearingItem(
+  override open func finalLayoutAttributesForDisappearingItem(
     at itemIndexPath: IndexPath)
     -> UICollectionViewLayoutAttributes?
   {
@@ -422,7 +422,7 @@ public class MagazineLayout: UICollectionViewLayout {
     }
   }
 
-  override public func initialLayoutAttributesForAppearingSupplementaryElement(
+  override open func initialLayoutAttributesForAppearingSupplementaryElement(
     ofKind elementKind: String,
     at elementIndexPath: IndexPath)
     -> UICollectionViewLayoutAttributes?
@@ -452,7 +452,7 @@ public class MagazineLayout: UICollectionViewLayout {
     }
   }
 
-  override public func finalLayoutAttributesForDisappearingSupplementaryElement(
+  override open func finalLayoutAttributesForDisappearingSupplementaryElement(
     ofKind elementKind: String,
     at elementIndexPath: IndexPath)
     -> UICollectionViewLayoutAttributes?
@@ -482,11 +482,11 @@ public class MagazineLayout: UICollectionViewLayout {
     }
   }
 
-  override public func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+  override open func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
     return collectionView?.bounds.size.width != .some(newBounds.size.width)
   }
 
-  override public func invalidationContext(
+  override open func invalidationContext(
     forBoundsChange newBounds: CGRect)
     -> UICollectionViewLayoutInvalidationContext
   {
@@ -501,7 +501,7 @@ public class MagazineLayout: UICollectionViewLayout {
     return invalidationContext
   }
 
-  override public func shouldInvalidateLayout(
+  override open func shouldInvalidateLayout(
     forPreferredLayoutAttributes preferredAttributes: UICollectionViewLayoutAttributes,
     withOriginalAttributes originalAttributes: UICollectionViewLayoutAttributes)
     -> Bool
@@ -540,7 +540,7 @@ public class MagazineLayout: UICollectionViewLayout {
     }
   }
 
-  override public func invalidationContext(
+  override open func invalidationContext(
     forPreferredLayoutAttributes preferredAttributes: UICollectionViewLayoutAttributes,
     withOriginalAttributes originalAttributes: UICollectionViewLayoutAttributes)
     -> UICollectionViewLayoutInvalidationContext
@@ -594,7 +594,7 @@ public class MagazineLayout: UICollectionViewLayout {
     return context
   }
 
-  override public func invalidateLayout(with context: UICollectionViewLayoutInvalidationContext) {
+  override open func invalidateLayout(with context: UICollectionViewLayoutInvalidationContext) {
     guard let context = context as? MagazineLayoutInvalidationContext else {
       assertionFailure("`context` must be an instance of `MagazineLayoutInvalidationContext`")
       return
